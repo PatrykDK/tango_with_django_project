@@ -33,9 +33,13 @@ def populate():
     cats = {'Python': {'pages': python_pages},
             'Django': {'pages': django_pages},
             'Other Frameworks': {'pages': other_pages} }
-    
+    intPopulate = 128
     for cat, cat_data in cats.items():
         c = add_cat(cat)
+        c.views = intPopulate
+        intPopulate = intPopulate / 2
+        c.likes = intPopulate
+        c.save()
         for p in cat_data['pages']:
             add_page(c, p['title'], p['url'])
 
